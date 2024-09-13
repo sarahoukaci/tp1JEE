@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringManipulation.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TP-Test</a> &gt; <a href="index.source.html" class="el_package">fr.rouen.mastergil.tptest.bonus</a> &gt; <span class="el_source">StringManipulation.java</span></div><h1>StringManipulation.java</h1><pre class="source lang-java linenums">package fr.rouen.mastergil.tptest.bonus;
+
+import java.util.HashSet;
+
+<span class="nc" id="L5">public class StringManipulation {</span>
+
+
+    public static boolean a(String s) {
+<span class="nc bnc" id="L9" title="All 4 branches missed.">        if (s == null || s.length() == 0) return false;</span>
+
+<span class="nc" id="L11">        s = s.replaceAll(&quot;[^a-zA-Z0-9]&quot;, &quot;&quot;).toLowerCase();</span>
+
+<span class="nc bnc" id="L13" title="All 2 branches missed.">        for (int i = 0; i &lt; s.length(); i++) {</span>
+<span class="nc bnc" id="L14" title="All 2 branches missed.">            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {</span>
+<span class="nc" id="L15">                return false;</span>
+            }
+        }
+
+<span class="nc" id="L19">        return true;</span>
+    }
+
+    public int b(String s) {
+<span class="nc" id="L23">        int count = 0;</span>
+<span class="nc" id="L24">        HashSet&lt;Character&gt; substring = new HashSet&lt;Character&gt;();</span>
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        for (int i = 0; i &lt; s.length(); i++) {</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">            for (int j = i; j &lt; s.length(); j++) {</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">                if (!substring.contains(s.charAt(j)))</span>
+<span class="nc" id="L28">                    substring.add(s.charAt(j));</span>
+                else {
+<span class="nc" id="L30">                    count = Math.max(substring.size(), count);</span>
+<span class="nc" id="L31">                    substring.clear();</span>
+<span class="nc" id="L32">                    break;</span>
+                }
+
+<span class="nc bnc" id="L35" title="All 2 branches missed.">                if (j == s.length() - 1)</span>
+<span class="nc" id="L36">                    count = Math.max(substring.size(), count);</span>
+
+            }
+        }
+<span class="nc" id="L40">        return count;</span>
+    }
+
+    public String c(String[] strs) {
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (strs.length == 0)</span>
+<span class="nc" id="L45">            return &quot;&quot;;</span>
+
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        for (int i = strs[0].length(); i &gt; 0; i--) {</span>
+<span class="nc" id="L48">            boolean isSame = true;</span>
+<span class="nc" id="L49">            String prefix = strs[0].substring(0, i);</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            for (int j = 1; j &lt; strs.length; j++) {</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                if (!strs[j].startsWith(prefix)) {</span>
+<span class="nc" id="L52">                    isSame = false;</span>
+<span class="nc" id="L53">                    break;</span>
+                }
+            }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            if (isSame)</span>
+<span class="nc" id="L57">                return strs[0].substring(0, i);</span>
+        }
+<span class="nc" id="L59">        return &quot;&quot;;</span>
+    }
+
+    public int d(String S, String T) {
+<span class="nc" id="L63">        int[][] f = new int[S.length() + 1][T.length() + 1];</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        for (int k = 0; k &lt; S.length(); k++)</span>
+<span class="nc" id="L65">            f[k][0] = 1;</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (int i = 1; i &lt;= S.length(); i++) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            for (int j = 1; j &lt;= T.length(); j++) {</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">                if (S.charAt(i - 1) == T.charAt(j - 1)) {</span>
+<span class="nc" id="L69">                    f[i][j] += f[i - 1][j] + f[i - 1][j - 1];</span>
+                } else {
+<span class="nc" id="L71">                    f[i][j] += f[i - 1][j];</span>
+                }
+            }
+        }
+<span class="nc" id="L75">        return f[S.length()][T.length()];</span>
+    }
+
+    private String e(String str) {
+<span class="nc" id="L79">        str = str.toLowerCase();</span>
+<span class="nc" id="L80">        str = str.replace(&quot;a&quot;, &quot;4&quot;);</span>
+<span class="nc" id="L81">        str = str.replace(&quot;b&quot;, &quot;8&quot;);</span>
+<span class="nc" id="L82">        str = str.replace(&quot;e&quot;, &quot;3&quot;);</span>
+<span class="nc" id="L83">        str = str.replace(&quot;g&quot;, &quot;9&quot;);</span>
+<span class="nc" id="L84">        str = str.replace(&quot;i&quot;, &quot;1&quot;);</span>
+<span class="nc" id="L85">        str = str.replace(&quot;o&quot;, &quot;0&quot;);</span>
+<span class="nc" id="L86">        str = str.replace(&quot;s&quot;, &quot;5&quot;);</span>
+<span class="nc" id="L87">        str = str.replace(&quot;t&quot;, &quot;7&quot;);</span>
+<span class="nc" id="L88">        str = str.replace(&quot;z&quot;, &quot;2&quot;);</span>
+<span class="nc" id="L89">        return str;</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

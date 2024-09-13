@@ -1,0 +1,10 @@
+fr\rouen\mastergil\tptest\meteo\StationMeteo.class
+fr\rouen\mastergil\tptest\BankAccount.class
+fr\rouen\mastergil\tptest\BankAccountWithDAO.class
+fr\rouen\mastergil\tptest\meteo\OpenWeatherMapProvider.class
+fr\rouen\mastergil\tptest\bonus\StringManipulation.class
+fr\rouen\mastergil\tptest\JdbcDAO.class
+fr\rouen\mastergil\tptest\meteo\IWeatherProvider.class
+fr\rouen\mastergil\tptest\meteo\Prevision.class
+fr\rouen\mastergil\tptest\Devise.class
+fr\rouen\mastergil\tptest\Money.class
